@@ -40,8 +40,6 @@ export interface JuegoAPI {
 export class EncuestasService {
 
   private supabase: SupabaseClient;
-  // RAWG API - clave gratuita en rawg.io/apidocs
-  private readonly RAWG_KEY = 'TU_RAWG_API_KEY'; // ← Reemplaza con tu key de rawg.io
 
   constructor(private auth: AuthService) {
     this.supabase = createClient(environment.supabaseUrl, environment.supabaseKey);
@@ -60,15 +58,25 @@ export class EncuestasService {
 
   async crear(encuesta: Encuesta): Promise<Encuesta> {
     const userId = this.auth.currentUser?.id;
-    const payload = { ...encuesta, user_id: userId, fecha_hora: new Date().toISOString() };
+    const payload = {
+      ...encuesta,
+      user_id: userId,
+      fecha_hora: new Date().toISOString()
+    };
     const { data, error } = await this.supabase
-      .from('encuestas').insert(payload).select().single();
+      .from('encuestas')
+      .insert(payload)
+      .select()
+      .single();
     if (error) throw error;
     return data as Encuesta;
   }
 
   async eliminar(id: number): Promise<void> {
-    const { error } = await this.supabase.from('encuestas').delete().eq('id', id);
+    const { error } = await this.supabase
+      .from('encuestas')
+      .delete()
+      .eq('id', id);
     if (error) throw error;
   }
 
@@ -77,7 +85,7 @@ export class EncuestasService {
   async obtenerUbicacion(): Promise<{ lat: number; lng: number }> {
     return new Promise((resolve, reject) => {
       if (!navigator.geolocation) {
-        reject(new Error('GPS no disponible'));
+        reject(new Error('GPS no disponible en este dispositivo'));
         return;
       }
       navigator.geolocation.getCurrentPosition(
@@ -95,55 +103,126 @@ export class EncuestasService {
     const blob = await base64Response.blob();
     const filePath = `encuestas/${Date.now()}_${fileName}`;
     const { error } = await this.supabase.storage
-      .from('evidencias').upload(filePath, blob, { contentType: 'image/jpeg', upsert: true });
+      .from('evidencias')
+      .upload(filePath, blob, { contentType: 'image/jpeg', upsert: true });
     if (error) throw error;
-    const { data } = this.supabase.storage.from('evidencias').getPublicUrl(filePath);
+    const { data } = this.supabase.storage
+      .from('evidencias')
+      .getPublicUrl(filePath);
     return data.publicUrl;
   }
 
-  // ── API RAWG ──────────────────────────────────────────
+  // ── API RAWG (con tu key real) ─────────────────────────
+  // Regístrate gratis en https://rawg.io/apidocs para obtener tu key
+  // y reemplaza el valor en environment.ts: rawgKey: 'TU_KEY_AQUI'
 
   async buscarJuego(nombre: string): Promise<JuegoAPI | null> {
     try {
+      const key = (environment as any).rawgKey;
+      if (!key || key === 'TU_KEY_AQUI') {
+        // Sin key de RAWG, ir directo al fallback
+        return await this.buscarJuegoFreeToPlay(nombre);
+      }
       const query = encodeURIComponent(nombre);
-      const url = `https://api.rawg.io/api/games?key=${this.RAWG_KEY}&search=${query}&page_size=1`;
+      const url = `https://api.rawg.io/api/games?key=${key}&search=${query}&page_size=1`;
       const res = await fetch(url);
+      if (!res.ok) return await this.buscarJuegoFreeToPlay(nombre);
       const json = await res.json();
-      if (!json.results || json.results.length === 0) return null;
+      if (!json.results || json.results.length === 0) {
+        return await this.buscarJuegoFreeToPlay(nombre);
+      }
       const g = json.results[0];
       return {
         nombre: g.name,
         imagen: g.background_image || '',
-        genero: g.genres?.map((x: any) => x.name).join(', ') || '',
-        plataforma: g.platforms?.map((x: any) => x.platform.name).join(', ') || '',
-        rating: g.rating?.toString() || '',
-        descripcion: `Rating: ${g.rating} | Metacritic: ${g.metacritic || 'N/D'}`
+        genero: g.genres?.map((x: any) => x.name).join(', ') || 'N/D',
+        plataforma: g.platforms?.map((x: any) => x.platform.name).join(', ') || 'N/D',
+        rating: g.rating ? g.rating.toFixed(1) + ' / 5' : 'N/D',
+        descripcion: `Metacritic: ${g.metacritic || 'N/D'} | Lanzamiento: ${g.released || 'N/D'}`
       };
     } catch {
-      return null;
+      return await this.buscarJuegoFreeToPlay(nombre);
     }
   }
 
-  // ── ALTERNATIVA GRATUITA SIN KEY: FreeToGame ──────────
+  // ── FreeToGame — búsqueda correcta por nombre ─────────
+  // Documentación: https://www.freetogame.com/api-doc
 
   async buscarJuegoFreeToPlay(nombre: string): Promise<JuegoAPI | null> {
     try {
-      const url = `https://www.freetogame.com/api/games?category=${encodeURIComponent(nombre)}`;
+      // FreeToGame no tiene búsqueda por texto, descargamos la lista y filtramos
+      const url = 'https://www.freetogame.com/api/games';
       const res = await fetch(url);
-      if (!res.ok) return null;
-      const json = await res.json();
-      if (!Array.isArray(json) || json.length === 0) return null;
-      // Buscar coincidencia aproximada por nombre
-      const match = json.find((g: any) =>
-        g.title.toLowerCase().includes(nombre.toLowerCase())
-      ) || json[0];
+      if (!res.ok) return await this.buscarConOpenLibre(nombre);
+      const json: any[] = await res.json();
+      if (!Array.isArray(json) || json.length === 0) {
+        return await this.buscarConOpenLibre(nombre);
+      }
+
+      const nombreLower = nombre.toLowerCase();
+
+      // Primero buscar coincidencia exacta en el título
+      let match = json.find((g: any) =>
+        g.title.toLowerCase() === nombreLower
+      );
+
+      // Si no hay exacta, buscar que incluya el texto
+      if (!match) {
+        match = json.find((g: any) =>
+          g.title.toLowerCase().includes(nombreLower)
+        );
+      }
+
+      // Si tampoco, buscar que el texto incluya alguna palabra del título
+      if (!match) {
+        const palabras = nombreLower.split(' ').filter(p => p.length > 3);
+        match = json.find((g: any) =>
+          palabras.some(p => g.title.toLowerCase().includes(p))
+        );
+      }
+
+      if (!match) {
+        return await this.buscarConOpenLibre(nombre);
+      }
+
       return {
         nombre: match.title,
-        imagen: match.thumbnail,
-        genero: match.genre,
-        plataforma: match.platform,
-        rating: 'N/D',
-        descripcion: match.short_description
+        imagen: match.thumbnail || '',
+        genero: match.genre || 'N/D',
+        plataforma: match.platform || 'N/D',
+        rating: 'Gratis',
+        descripcion: match.short_description || 'Sin descripción disponible'
+      };
+    } catch {
+      return await this.buscarConOpenLibre(nombre);
+    }
+  }
+
+  // ── Fallback: OpenLibre / CheapShark para juegos de PC ─
+  // No requiere API key — https://apidocs.cheapshark.com
+
+  async buscarConOpenLibre(nombre: string): Promise<JuegoAPI | null> {
+    try {
+      const query = encodeURIComponent(nombre);
+      const url = `https://www.cheapshark.com/api/1.0/games?title=${query}&limit=1`;
+      const res = await fetch(url);
+      if (!res.ok) return null;
+      const json: any[] = await res.json();
+      if (!Array.isArray(json) || json.length === 0) return null;
+
+      const g = json[0];
+      // CheapShark no da imagen directa — usamos Steam si hay steamAppID
+      const imagen = g.steamAppID
+        ? `https://cdn.akamai.steamstatic.com/steam/apps/${g.steamAppID}/header.jpg`
+        : '';
+
+      return {
+        nombre: g.external || nombre,
+        imagen,
+        genero: 'PC / Steam',
+        plataforma: 'PC',
+        rating: g.cheapest ? `Desde $${g.cheapest}` : 'N/D',
+        descripcion: `Mejor precio: $${g.cheapest || 'N/D'} en ${g.cheapestDealID ? 'tienda online' : 'N/D'}`
       };
     } catch {
       return null;
