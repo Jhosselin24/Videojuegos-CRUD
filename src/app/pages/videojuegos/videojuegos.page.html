@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>🎮 Videojuegos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding fondo">
+
+  <div class="header-section">
+    <h2>Mi colección gamer</h2>
+    <p>Administra tus videojuegos favoritos</p>
+  </div>
+
+  <!-- Estado vacío -->
+  <div *ngIf="videojuegos.length === 0" class="empty-state">
+    <ion-icon name="game-controller-outline"></ion-icon>
+    <h3>No hay videojuegos registrados</h3>
+    <p>Presiona el botón + para agregar uno</p>
+  </div>
+
+  <!-- Lista -->
+  <ion-card class="game-card" *ngFor="let juego of videojuegos">
+
+    <ion-card-header>
+      <ion-card-title>{{ juego.titulo }}</ion-card-title>
+      <ion-card-subtitle>{{ juego.categoria }}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <div *ngIf="juego.imagen_url" class="preview-container">
+        <img [src]="juego.imagen_url" alt="{{ juego.titulo }}">
+      </div>
+
+      <p><strong>🎮 Plataforma:</strong> {{ juego.plataforma }}</p>
+      <p><strong>💲 Precio:</strong> ${{ juego.precio }}</p>
+      <p><strong>📦 Stock:</strong> {{ juego.stock }}</p>
+
+      <div class="acciones">
+
+        <ion-button
+          class="btn-gamer"
+          size="small"
+          (click)="editarJuego(juego)">
+          Editar
+        </ion-button>
+
+        <ion-button
+          class="btn-gamer"
+          size="small"
+          (click)="eliminarJuego(juego.id!)">
+          Eliminar
+        </ion-button>
+
+      </div>
+
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Botón flotante -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button class="fab-gamer" (click)="agregarJuego()">
+    <span class="fab-plus">+</span>
+  </ion-fab-button>
+</ion-fab>
+
+</ion-content>

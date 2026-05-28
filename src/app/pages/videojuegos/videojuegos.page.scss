@@ -1,0 +1,161 @@
+.fondo {
+  --background: none;
+  background:
+    linear-gradient(rgba(10, 10, 25, 0.75), rgba(20, 20, 40, 0.8)),
+    url('https://png.pngtree.com/thumb_back/fw800/background/20250915/pngtree-futuristic-gamer-s-neon-lit-battlestation-image_18879223.webp');
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.header-section {
+  text-align: center;
+  margin-bottom: 25px;
+  padding: 18px;
+
+  background: rgba(17, 24, 39, 0.65);
+  backdrop-filter: blur(10px);
+
+  border-radius: 18px;
+  color: white;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.35);
+}
+
+.header-section h2 {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.header-section p {
+  color: #d1d5db;
+  font-size: 15px;
+}
+
+.game-card {
+  border-radius: 20px;
+  margin-bottom: 20px;
+
+  background: rgba(17, 24, 39, 0.78);
+  backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  box-shadow: 0 10px 24px rgba(0,0,0,0.45);
+  transition: transform 0.3s ease;
+}
+
+.game-card:hover {
+  transform: translateY(-5px);
+}
+
+ion-card-title {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+ion-card-subtitle {
+  color: #c084fc;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+ion-card-content p {
+  color: #e5e7eb;
+  font-size: 15px;
+  margin: 8px 0;
+}
+
+ion-card-content strong {
+  color: #60a5fa;
+}
+
+.preview-container {
+  text-align: center;
+  margin: 15px 0;
+}
+
+.preview-container img {
+  width: 180px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+.acciones {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.empty-state {
+  text-align: center;
+  color: white;
+
+  background: rgba(17, 24, 39, 0.65);
+  padding: 25px;
+  border-radius: 18px;
+
+  backdrop-filter: blur(8px);
+
+  box-shadow: 0 8px 18px rgba(0,0,0,0.35);
+}
+
+.empty-state ion-icon {
+  font-size: 80px;
+  color: #38bdf8;
+}
+
+.empty-state h3 {
+  margin-top: 10px;
+  font-size: 22px;
+}
+
+.empty-state p {
+  color: #d1d5db;
+}
+
+.fab-gamer {
+  --background: linear-gradient(135deg, #c084fc, #9333ea);
+  --color: white;
+
+  width: 72px;
+  height: 72px;
+
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 18px rgba(192, 132, 252, 0.75),
+    0 0 35px rgba(147, 51, 234, 0.55);
+
+  transition: all 0.3s ease;
+}
+
+.fab-gamer:hover {
+  transform: scale(1.12);
+}
+
+.fab-plus {
+  font-size: 42px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.btn-gamer {
+  --background: #c084fc;
+  --color: white;
+  --border-radius: 12px;
+
+  font-weight: 600;
+  letter-spacing: 0.5px;
+
+  box-shadow: 0 4px 14px rgba(192, 132, 252, 0.45);
+  transition: all 0.3s ease;
+}
+
+.btn-gamer:hover {
+  --background: #a855f7;
+  transform: scale(1.05);
+}

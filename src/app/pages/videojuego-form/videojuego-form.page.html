@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      {{ id ? '✏️ Editar Videojuego' : '🎮 Nuevo Videojuego' }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding fondo-form">
+
+  <ion-card class="form-card">
+
+    <ion-card-header>
+      <ion-card-title>
+        {{ id ? 'Actualizar videojuego' : 'Agregar videojuego' }}
+      </ion-card-title>
+      <ion-card-subtitle>
+        Completa la información
+      </ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <ion-item>
+        <ion-label position="stacked">🎮 Título</ion-label>
+        <ion-input [(ngModel)]="videojuego.titulo"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">🖥️ Plataforma</ion-label>
+        <ion-input [(ngModel)]="videojuego.plataforma"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">💲 Precio</ion-label>
+        <ion-input type="number" [(ngModel)]="videojuego.precio"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">📦 Stock</ion-label>
+        <ion-input type="number" [(ngModel)]="videojuego.stock"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">🏷️ Categoría</ion-label>
+        <ion-input [(ngModel)]="videojuego.categoria"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">🖼️ URL Imagen</ion-label>
+        <ion-input [(ngModel)]="videojuego.imagen_url"></ion-input>
+      </ion-item>
+
+      <!-- Vista previa -->
+      <div *ngIf="videojuego.imagen_url" class="preview-container">
+        <img [src]="videojuego.imagen_url" alt="Preview">
+      </div>
+
+      <ion-button
+        expand="block"
+        class="guardar-btn"
+        (click)="guardar()">
+
+        {{ id ? 'Actualizar' : 'Guardar' }}
+      </ion-button>
+
+    </ion-card-content>
+
+  </ion-card>
+
+</ion-content>
