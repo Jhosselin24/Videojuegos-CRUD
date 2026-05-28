@@ -1,0 +1,89 @@
+/* ── encuestas.page.scss ─────────────────────── */
+.fondo-enc {
+  --background: none;
+  background:
+    linear-gradient(rgba(5,10,25,0.80), rgba(10,20,40,0.85)),
+    url('https://png.pngtree.com/thumb_back/fw800/background/20250915/pngtree-futuristic-gamer-s-neon-lit-battlestation-image_18879223.webp');
+  background-size: cover; background-position: center;
+  background-repeat: no-repeat; background-attachment: fixed;
+}
+
+.header-sec { margin-bottom: 20px; }
+
+.stats-row {
+  display: flex; justify-content: space-around;
+  background: rgba(15,23,42,0.75); border-radius: 18px; padding: 16px;
+  border: 1px solid rgba(255,255,255,0.06); backdrop-filter: blur(10px);
+}
+.stat { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.stat .n { font-size: 26px; font-weight: 900; color: #60a5fa; }
+.stat .l { font-size: 11px; color: #64748b; font-weight: 500; }
+
+.enc-card {
+  border-radius: 20px; margin-bottom: 16px;
+  background: rgba(15,23,42,0.82); backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.07);
+  box-shadow: 0 10px 26px rgba(0,0,0,0.45);
+  transition: transform .3s ease;
+}
+.enc-card:hover { transform: translateY(-4px); }
+
+.ch-row { display: flex; justify-content: space-between; align-items: flex-start; }
+ion-card-title { color: #f1f5f9; font-size: 19px; font-weight: 700; }
+ion-card-subtitle { color: #60a5fa; font-size: 12px; margin-top: 3px; }
+
+.del-btn { --color: #f87171; }
+
+.foto-ev { position: relative; margin-bottom: 14px; }
+.foto-ev img {
+  width: 100%; height: 170px; object-fit: cover;
+  border-radius: 14px; border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+.foto-tag {
+  position: absolute; top: 8px; right: 8px;
+  background: rgba(15,23,42,0.85); color: #93c5fd;
+  font-size: 11px; font-weight: 600; padding: 3px 9px;
+  border-radius: 20px; backdrop-filter: blur(6px);
+}
+
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
+.ii {
+  display: flex; flex-direction: column; gap: 2px;
+  background: rgba(255,255,255,0.04); padding: 9px 11px;
+  border-radius: 11px; border: 1px solid rgba(255,255,255,0.04);
+}
+.il { font-size: 10px; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: .4px; }
+.iv { font-size: 13px; color: #e2e8f0; font-weight: 500; word-break: break-word; }
+
+.api-chip-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+.api-chip {
+  background: rgba(192,132,252,0.12); color: #c084fc;
+  font-size: 11px; font-weight: 600; padding: 3px 10px;
+  border-radius: 20px; border: 1px solid rgba(192,132,252,0.2);
+}
+
+.comentario {
+  color: #94a3b8; font-size: 13px; font-style: italic;
+  background: rgba(255,255,255,0.03); padding: 8px 12px;
+  border-radius: 10px; border-left: 3px solid #3b82f6;
+}
+
+.empty {
+  text-align: center; color: white;
+  background: rgba(15,23,42,0.72); padding: 30px 20px;
+  border-radius: 20px; backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.empty ion-icon { font-size: 70px; color: #60a5fa; }
+.empty h3 { font-size: 19px; font-weight: 700; margin-top: 10px; }
+.empty p { color: #94a3b8; font-size: 13px; }
+
+.fab-enc {
+  --background: linear-gradient(135deg, #6366f1, #4f46e5); --color: white;
+  width: 66px; height: 66px; border-radius: 50%;
+  box-shadow: 0 0 18px rgba(99,102,241,0.65), 0 0 34px rgba(79,70,229,0.45);
+}
+.fab-plus { font-size: 40px; font-weight: bold; line-height: 1; }
+
+ion-toolbar { --background: rgba(15,23,42,0.95); --color: white; }

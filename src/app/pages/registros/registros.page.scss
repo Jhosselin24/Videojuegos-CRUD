@@ -1,0 +1,189 @@
+.fondo-registros {
+  --background: none;
+  background:
+    linear-gradient(rgba(10, 10, 25, 0.78), rgba(5, 15, 30, 0.85)),
+    url('https://png.pngtree.com/thumb_back/fw800/background/20250915/pngtree-futuristic-gamer-s-neon-lit-battlestation-image_18879223.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.header-section {
+  text-align: center;
+  margin-bottom: 22px;
+  padding: 16px;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 18px;
+  color: white;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.header-section h2 {
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+
+.header-section p {
+  color: #60a5fa;
+  font-size: 14px;
+  margin: 0;
+  font-weight: 500;
+}
+
+.registro-card {
+  border-radius: 20px;
+  margin-bottom: 18px;
+  background: rgba(15, 23, 42, 0.80);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.45);
+  transition: transform 0.3s ease;
+}
+
+.registro-card:hover {
+  transform: translateY(-4px);
+}
+
+.card-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+ion-card-title {
+  color: #f1f5f9;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+ion-card-subtitle {
+  color: #60a5fa;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.btn-eliminar {
+  --color: #f87171;
+  font-size: 20px;
+  margin-top: -4px;
+}
+
+/* Foto de evidencia */
+.foto-evidencia {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.foto-evidencia img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.foto-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(15, 23, 42, 0.85);
+  color: #93c5fd;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(96, 165, 250, 0.3);
+}
+
+/* Grid de info */
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.info-label {
+  font-size: 11px;
+  color: #64748b;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.info-value {
+  font-size: 14px;
+  color: #e2e8f0;
+  font-weight: 500;
+  word-break: break-word;
+}
+
+/* Estado vacío */
+.empty-state {
+  text-align: center;
+  color: white;
+  background: rgba(15, 23, 42, 0.7);
+  padding: 30px 20px;
+  border-radius: 20px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.empty-state ion-icon {
+  font-size: 72px;
+  color: #60a5fa;
+}
+
+.empty-state h3 {
+  font-size: 20px;
+  margin-top: 12px;
+  font-weight: 700;
+}
+
+.empty-state p {
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+/* FAB */
+.fab-gamer {
+  --background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  --color: white;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  box-shadow:
+    0 0 16px rgba(59, 130, 246, 0.65),
+    0 0 32px rgba(29, 78, 216, 0.45);
+}
+
+.fab-plus {
+  font-size: 40px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+ion-toolbar {
+  --background: rgba(15, 23, 42, 0.95);
+  --color: white;
+}
+
+ion-skeleton-text {
+  --border-radius: 8px;
+}

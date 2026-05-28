@@ -1,0 +1,186 @@
+// promo.page.scss
+.fondo-promo {
+  --background: none;
+  background:
+    linear-gradient(160deg, rgba(10, 10, 35, 0.92) 0%, rgba(15, 30, 60, 0.88) 100%),
+    url('https://png.pngtree.com/thumb_back/fw800/background/20250915/pngtree-futuristic-gamer-s-neon-lit-battlestation-image_18879223.webp');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.hero-section {
+  text-align: center;
+  padding: 36px 20px 28px;
+}
+
+.hero-icon {
+  font-size: 64px;
+  margin-bottom: 12px;
+  filter: drop-shadow(0 0 20px rgba(96, 165, 250, 0.6));
+}
+
+.hero-section h1 {
+  font-size: 40px;
+  font-weight: 900;
+  color: #f1f5f9;
+  margin: 0;
+  letter-spacing: -1px;
+  text-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+}
+
+.hero-subtitle {
+  color: #93c5fd;
+  font-size: 16px;
+  margin: 8px 0 16px;
+}
+
+.version-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 6px 18px;
+  border-radius: 20px;
+  box-shadow: 0 0 16px rgba(59, 130, 246, 0.5);
+  letter-spacing: 0.3px;
+}
+
+.features-section {
+  margin: 0 16px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 18px;
+  padding: 16px;
+  backdrop-filter: blur(10px);
+}
+
+.feature-icon {
+  font-size: 30px;
+  flex-shrink: 0;
+}
+
+.feature-item strong {
+  display: block;
+  color: #f1f5f9;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.feature-item p {
+  color: #94a3b8;
+  font-size: 13px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.qr-section {
+  text-align: center;
+  margin: 0 16px 24px;
+  padding: 24px;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.qr-section h3 {
+  color: #f1f5f9;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 18px;
+}
+
+.qr-container {
+  display: flex;
+  justify-content: center;
+}
+
+.qr-svg {
+  width: 160px;
+  height: 160px;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.qr-hint {
+  color: #64748b;
+  font-size: 13px;
+  margin: 14px 0 0;
+}
+
+.acciones-section {
+  margin: 0 16px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btn-compartir {
+  height: 52px;
+  --background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  --color: white;
+  font-size: 16px;
+  font-weight: 700;
+  --border-radius: 16px;
+  box-shadow: 0 0 18px rgba(59, 130, 246, 0.5);
+}
+
+.btn-compartir::part(native) { border-radius: 16px; }
+
+.btn-copiar {
+  height: 52px;
+  --color: #60a5fa;
+  --border-color: rgba(96, 165, 250, 0.4);
+  font-size: 16px;
+  font-weight: 600;
+  --border-radius: 16px;
+}
+
+.btn-copiar::part(native) { border-radius: 16px; }
+
+.stats-section {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 16px;
+  padding: 20px;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.stat-num {
+  font-size: 24px;
+  font-weight: 900;
+  color: #60a5fa;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+ion-toolbar {
+  --background: rgba(15, 23, 42, 0.95);
+  --color: white;
+}

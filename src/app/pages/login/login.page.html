@@ -1,0 +1,76 @@
+<ion-content class="fondo-auth">
+
+  <div class="auth-wrapper">
+
+    <!-- Logo / Hero -->
+    <div class="hero">
+      <div class="hero-icon">🎮</div>
+      <h1>GameCampus</h1>
+      <p>La app gamer de tu universidad</p>
+    </div>
+
+    <!-- Tabs Login / Registro -->
+    <div class="tab-switcher">
+      <button [class.active]="modo === 'login'" (click)="modo = 'login'">Iniciar sesión</button>
+      <button [class.active]="modo === 'registro'" (click)="modo = 'registro'">Crear cuenta</button>
+    </div>
+
+    <div class="auth-card">
+
+      <!-- LOGIN -->
+      <div *ngIf="modo === 'login'">
+        <ion-item class="auth-item">
+          <ion-label position="stacked">✉️ Email</ion-label>
+          <ion-input type="email" [(ngModel)]="email" placeholder="tu@email.com" autocomplete="email"></ion-input>
+        </ion-item>
+        <ion-item class="auth-item">
+          <ion-label position="stacked">🔒 Contraseña</ion-label>
+          <ion-input [type]="verPassword ? 'text' : 'password'" [(ngModel)]="password" placeholder="••••••••"></ion-input>
+          <ion-button fill="clear" slot="end" (click)="verPassword = !verPassword">
+            <ion-icon [name]="verPassword ? 'eye-off-outline' : 'eye-outline'"></ion-icon>
+          </ion-button>
+        </ion-item>
+
+        <ion-button expand="block" class="btn-auth" [disabled]="cargando" (click)="login()">
+          <ion-spinner *ngIf="cargando" name="crescent"></ion-spinner>
+          <span *ngIf="!cargando">Entrar 🚀</span>
+        </ion-button>
+      </div>
+
+      <!-- REGISTRO -->
+      <div *ngIf="modo === 'registro'">
+        <ion-item class="auth-item">
+          <ion-label position="stacked">✉️ Email</ion-label>
+          <ion-input type="email" [(ngModel)]="email" placeholder="tu@email.com" autocomplete="email"></ion-input>
+        </ion-item>
+        <ion-item class="auth-item">
+          <ion-label position="stacked">🔒 Contraseña</ion-label>
+          <ion-input [type]="verPassword ? 'text' : 'password'" [(ngModel)]="password" placeholder="Mínimo 6 caracteres"></ion-input>
+          <ion-button fill="clear" slot="end" (click)="verPassword = !verPassword">
+            <ion-icon [name]="verPassword ? 'eye-off-outline' : 'eye-outline'"></ion-icon>
+          </ion-button>
+        </ion-item>
+        <ion-item class="auth-item">
+          <ion-label position="stacked">🔒 Confirmar contraseña</ion-label>
+          <ion-input [type]="verPassword ? 'text' : 'password'" [(ngModel)]="confirm" placeholder="Repite la contraseña"></ion-input>
+        </ion-item>
+
+        <ion-button expand="block" class="btn-auth" [disabled]="cargando" (click)="registrar()">
+          <ion-spinner *ngIf="cargando" name="crescent"></ion-spinner>
+          <span *ngIf="!cargando">Crear cuenta 🎮</span>
+        </ion-button>
+      </div>
+
+      <p class="error-msg" *ngIf="errorMsg">{{ errorMsg }}</p>
+
+    </div>
+
+    <!-- Promo -->
+    <div class="promo-footer">
+      <p>¿Quieres probar la app?</p>
+      <strong>Crea tu cuenta gratis y empieza a explorar 🕹️</strong>
+    </div>
+
+  </div>
+
+</ion-content>

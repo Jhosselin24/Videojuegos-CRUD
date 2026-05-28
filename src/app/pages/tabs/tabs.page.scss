@@ -1,0 +1,19 @@
+.tab-bar-gamer {
+  --background: rgba(10, 15, 30, 0.97);
+  --color: #475569;
+  --color-selected: #60a5fa;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16px);
+  padding-bottom: env(safe-area-inset-bottom);
+  height: 62px;
+}
+
+ion-tab-button {
+  --color: #475569;
+  --color-selected: #60a5fa;
+}
+
+ion-tab-button ion-label {
+  font-size: 11px;
+  font-weight: 600;
+}

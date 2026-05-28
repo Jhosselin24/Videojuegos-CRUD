@@ -1,0 +1,154 @@
+.fondo-auth {
+  --background: none;
+  background:
+    linear-gradient(160deg, rgba(5, 10, 25, 0.93) 0%, rgba(10, 25, 50, 0.90) 100%),
+    url('https://png.pngtree.com/thumb_back/fw800/background/20250915/pngtree-futuristic-gamer-s-neon-lit-battlestation-image_18879223.webp');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.auth-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px 20px 32px;
+  min-height: 100%;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.hero-icon {
+  font-size: 64px;
+  filter: drop-shadow(0 0 24px rgba(96, 165, 250, 0.7));
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.hero h1 {
+  font-size: 38px;
+  font-weight: 900;
+  color: #f1f5f9;
+  margin: 10px 0 6px;
+  letter-spacing: -1px;
+  text-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+}
+
+.hero p {
+  color: #60a5fa;
+  font-size: 15px;
+  margin: 0;
+}
+
+/* Tab switcher */
+.tab-switcher {
+  display: flex;
+  width: 100%;
+  max-width: 400px;
+  background: rgba(15, 23, 42, 0.7);
+  border-radius: 16px;
+  padding: 4px;
+  margin-bottom: 16px;
+  border: 1px solid rgba(255,255,255,0.07);
+}
+
+.tab-switcher button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  background: transparent;
+  color: #64748b;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.tab-switcher button.active {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: white;
+  box-shadow: 0 0 14px rgba(59, 130, 246, 0.45);
+}
+
+/* Card */
+.auth-card {
+  width: 100%;
+  max-width: 400px;
+  background: rgba(15, 23, 42, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 22px;
+  padding: 20px 16px;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+}
+
+.auth-item {
+  margin-bottom: 14px;
+  border-radius: 14px;
+  --background: rgba(255,255,255,0.06);
+  --color: #f1f5f9;
+  --highlight-color-focused: #60a5fa;
+  border: 1px solid rgba(255,255,255,0.07);
+  overflow: hidden;
+}
+
+ion-label {
+  color: #94a3b8 !important;
+  font-size: 12px !important;
+  font-weight: 600;
+}
+
+ion-input {
+  --color: #ffffff;
+  --placeholder-color: #475569;
+}
+
+.btn-auth {
+  margin-top: 8px;
+  height: 52px;
+  --background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  --color: white;
+  font-size: 17px;
+  font-weight: 700;
+  --border-radius: 14px;
+  box-shadow: 0 0 18px rgba(59, 130, 246, 0.5);
+}
+
+.btn-auth::part(native) { border-radius: 14px; }
+
+.error-msg {
+  color: #f87171;
+  font-size: 13px;
+  text-align: center;
+  margin-top: 12px;
+  background: rgba(248, 113, 113, 0.1);
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(248, 113, 113, 0.2);
+}
+
+.promo-footer {
+  margin-top: 28px;
+  text-align: center;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.promo-footer strong {
+  display: block;
+  color: #93c5fd;
+  margin-top: 4px;
+  font-size: 14px;
+}
+
+ion-spinner {
+  color: white;
+}

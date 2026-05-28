@@ -1,0 +1,150 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/encuestas"></ion-back-button>
+    </ion-buttons>
+    <ion-title>📋 Nueva Encuesta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding fondo-form">
+<ion-card class="form-card">
+  <ion-card-header>
+    <ion-card-title>Encuesta Gamer 🎮</ion-card-title>
+    <ion-card-subtitle>Campus Survey · {{ fechaHoy }}</ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-card-content>
+
+    <!-- ① DATOS PERSONALES -->
+    <div class="seccion-titulo"><span class="badge">1</span> Datos de la persona</div>
+
+    <ion-item class="fi">
+      <ion-label position="stacked">👤 Nombre o alias *</ion-label>
+      <ion-input [(ngModel)]="enc.alias" placeholder="Ej: ProGamer123"></ion-input>
+    </ion-item>
+
+    <ion-item class="fi">
+      <ion-label position="stacked">🎂 Rango de edad</ion-label>
+      <ion-select [(ngModel)]="enc.edad_rango" placeholder="Seleccionar" interface="action-sheet">
+        <ion-select-option value="< 18">Menos de 18</ion-select-option>
+        <ion-select-option value="18-25">18 – 25</ion-select-option>
+        <ion-select-option value="26-35">26 – 35</ion-select-option>
+        <ion-select-option value="36+">36 o más</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item class="fi">
+      <ion-label position="stacked">🏷️ Rol en el campus</ion-label>
+      <ion-select [(ngModel)]="enc.rol" placeholder="Seleccionar" interface="action-sheet">
+        <ion-select-option value="estudiante">Estudiante</ion-select-option>
+        <ion-select-option value="docente">Docente</ion-select-option>
+        <ion-select-option value="administrativo">Administrativo</ion-select-option>
+        <ion-select-option value="visitante">Visitante</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- ② VIDEOJUEGO -->
+    <div class="seccion-titulo" style="margin-top:20px"><span class="badge">2</span> Preferencias gamer</div>
+
+    <ion-item class="fi">
+      <ion-label position="stacked">🎮 Videojuego favorito *</ion-label>
+      <ion-input [(ngModel)]="enc.videojuego" placeholder="Ej: Minecraft, Fortnite..."></ion-input>
+    </ion-item>
+
+    <ion-item class="fi">
+      <ion-label position="stacked">🖥️ Plataforma preferida</ion-label>
+      <ion-select [(ngModel)]="enc.plataforma" placeholder="Seleccionar" interface="action-sheet">
+        <ion-select-option value="móvil">📱 Móvil</ion-select-option>
+        <ion-select-option value="consola">🎮 Consola</ion-select-option>
+        <ion-select-option value="PC">💻 PC</ion-select-option>
+        <ion-select-option value="navegador">🌐 Navegador</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item class="fi">
+      <ion-label position="stacked">🎭 Género favorito</ion-label>
+      <ion-select [(ngModel)]="enc.genero_juego" placeholder="Seleccionar" interface="action-sheet">
+        <ion-select-option value="acción">⚔️ Acción</ion-select-option>
+        <ion-select-option value="aventura">🗺️ Aventura</ion-select-option>
+        <ion-select-option value="deportes">⚽ Deportes</ion-select-option>
+        <ion-select-option value="estrategia">♟️ Estrategia</ion-select-option>
+        <ion-select-option value="RPG">🧙 RPG</ion-select-option>
+        <ion-select-option value="terror">👻 Terror</ion-select-option>
+        <ion-select-option value="simulación">🏗️ Simulación</ion-select-option>
+        <ion-select-option value="otro">❓ Otro</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item class="fi">
+      <ion-label position="stacked">💬 Comentario breve</ion-label>
+      <ion-textarea [(ngModel)]="enc.comentario" rows="3" placeholder="¿Qué te gusta del juego?"></ion-textarea>
+    </ion-item>
+
+    <!-- ③ UBICACIÓN -->
+    <div class="seccion-titulo" style="margin-top:20px"><span class="badge">3</span> Ubicación GPS</div>
+
+    <ion-item class="fi">
+      <ion-label position="stacked">📍 Lugar del campus</ion-label>
+      <ion-select [(ngModel)]="enc.lugar" placeholder="Seleccionar lugar" interface="action-sheet">
+        <ion-select-option value="biblioteca">📚 Biblioteca</ion-select-option>
+        <ion-select-option value="cafetería">☕ Cafetería</ion-select-option>
+        <ion-select-option value="patio central">🌳 Patio central</ion-select-option>
+        <ion-select-option value="laboratorio">🖥️ Laboratorio</ion-select-option>
+        <ion-select-option value="entrada principal">🚪 Entrada principal</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-button expand="block" fill="outline" class="btn-gps" (click)="obtenerGPS()" [disabled]="gpsOk">
+      <ion-icon name="location-outline" slot="start"></ion-icon>
+      <span *ngIf="!gpsOk">Capturar ubicación GPS</span>
+      <span *ngIf="gpsOk">✅ GPS: {{ enc.latitud?.toFixed(4) }}, {{ enc.longitud?.toFixed(4) }}</span>
+    </ion-button>
+
+    <!-- ④ FOTO/GALERÍA -->
+    <div class="seccion-titulo" style="margin-top:20px"><span class="badge">4</span> Evidencia fotográfica</div>
+
+    <div class="foto-btns">
+      <ion-button fill="outline" class="btn-foto" (click)="tomarFoto('camera')">
+        <ion-icon name="camera-outline" slot="start"></ion-icon> Cámara
+      </ion-button>
+      <ion-button fill="outline" class="btn-foto" (click)="tomarFoto('gallery')">
+        <ion-icon name="images-outline" slot="start"></ion-icon> Galería
+      </ion-button>
+    </div>
+
+    <div class="foto-preview" *ngIf="fotoPreview">
+      <img [src]="fotoPreview" alt="Evidencia">
+    </div>
+
+    <!-- ⑤ BUSCAR EN API -->
+    <div class="seccion-titulo" style="margin-top:20px"><span class="badge">5</span> Info del juego (API)</div>
+
+    <ion-button expand="block" fill="outline" class="btn-api" [disabled]="buscandoApi || !enc.videojuego" (click)="buscarEnAPI()">
+      <ion-spinner *ngIf="buscandoApi" name="crescent" slot="start"></ion-spinner>
+      <ion-icon *ngIf="!buscandoApi" name="search-outline" slot="start"></ion-icon>
+      Buscar "{{ enc.videojuego || 'videojuego' }}" en API
+    </ion-button>
+
+    <div class="api-result" *ngIf="juegoAPI">
+      <img [src]="juegoAPI.imagen" *ngIf="juegoAPI.imagen" alt="cover">
+      <div class="api-info">
+        <strong>{{ juegoAPI.nombre }}</strong>
+        <span>🎭 {{ juegoAPI.genero }}</span>
+        <span>🖥️ {{ juegoAPI.plataforma }}</span>
+        <span>⭐ {{ juegoAPI.rating }}</span>
+        <p>{{ juegoAPI.descripcion }}</p>
+      </div>
+    </div>
+
+    <p class="api-miss" *ngIf="apiSinResultado">No se encontró el juego en la API. Puedes continuar igual.</p>
+
+    <!-- GUARDAR -->
+    <ion-button expand="block" class="btn-guardar" [disabled]="guardando" (click)="guardar()">
+      <ion-spinner *ngIf="guardando" name="crescent"></ion-spinner>
+      <span *ngIf="!guardando">💾 Guardar encuesta</span>
+    </ion-button>
+
+  </ion-card-content>
+</ion-card>
+</ion-content>

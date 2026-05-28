@@ -1,0 +1,176 @@
+.fondo-registro {
+  --background: none;
+  background:
+    linear-gradient(rgba(10, 10, 25, 0.82), rgba(5, 15, 30, 0.88)),
+    url('https://png.pngtree.com/thumb_back/fw800/background/20250915/pngtree-futuristic-gamer-s-neon-lit-battlestation-image_18879223.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.registro-card {
+  border-radius: 22px;
+  margin-top: 12px;
+  background: rgba(15, 23, 42, 0.82);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(96, 165, 250, 0.15);
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+ion-card-title {
+  color: #f1f5f9;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+ion-card-subtitle {
+  color: #60a5fa;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+.seccion-titulo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #e2e8f0;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #60a5fa, #3b82f6);
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: 0 0 10px rgba(96, 165, 250, 0.5);
+}
+
+ion-item {
+  margin-bottom: 14px;
+  border-radius: 14px;
+  --background: rgba(255, 255, 255, 0.06);
+  --color: #f1f5f9;
+  --highlight-color-focused: #60a5fa;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  overflow: hidden;
+}
+
+ion-label {
+  color: #94a3b8 !important;
+  font-size: 13px !important;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+ion-input {
+  --color: #ffffff;
+  --placeholder-color: #475569;
+}
+
+ion-select {
+  color: #ffffff;
+}
+
+/* Foto */
+.foto-container {
+  margin: 8px 0 20px;
+}
+
+.foto-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 160px;
+  border-radius: 18px;
+  border: 2px dashed rgba(96, 165, 250, 0.4);
+  background: rgba(96, 165, 250, 0.05);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #60a5fa;
+}
+
+.foto-placeholder:active {
+  background: rgba(96, 165, 250, 0.12);
+  border-color: rgba(96, 165, 250, 0.7);
+}
+
+.foto-placeholder ion-icon {
+  font-size: 52px;
+}
+
+.foto-placeholder p {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  color: #93c5fd;
+}
+
+.foto-placeholder span {
+  font-size: 13px;
+  color: #64748b;
+}
+
+.foto-preview {
+  position: relative;
+  text-align: center;
+}
+
+.foto-preview img {
+  width: 100%;
+  max-height: 220px;
+  object-fit: cover;
+  border-radius: 18px;
+  border: 2px solid rgba(96, 165, 250, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.btn-cambiar-foto {
+  --color: #60a5fa;
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+/* Botón guardar */
+.guardar-btn {
+  margin-top: 20px;
+  height: 54px;
+  --background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  --color: white;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  --border-radius: 16px;
+  box-shadow:
+    0 0 16px rgba(59, 130, 246, 0.55),
+    0 0 32px rgba(29, 78, 216, 0.35);
+}
+
+.guardar-btn::part(native) {
+  border-radius: 16px;
+}
+
+ion-toolbar {
+  --background: rgba(15, 23, 42, 0.95);
+  --color: white;
+}
+
+ion-spinner {
+  color: white;
+  margin-right: 8px;
+}
