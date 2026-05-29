@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import {
   IonHeader,
   IonToolbar,
@@ -12,37 +13,52 @@ import {
   IonCardHeader,
   IonCardTitle,
   IonCardSubtitle,
-  IonCardContent
+  IonCardContent,
+  IonButtons,
+  IonBackButton
 } from '@ionic/angular/standalone';
 
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { VideojuegosService, Videojuego } from '../../services/videojuegos';
+
+import {
+  VideojuegosService,
+  Videojuego
+} from '../../services/videojuegos';
 
 @Component({
   selector: 'app-videojuego-form',
   templateUrl: './videojuego-form.page.html',
   styleUrls: ['./videojuego-form.page.scss'],
   standalone: true,
+
   imports: [
     CommonModule,
     FormsModule,
+
     IonHeader,
     IonToolbar,
     IonTitle,
     IonContent,
+
     IonItem,
     IonLabel,
     IonInput,
+
     IonButton,
+
     IonCard,
     IonCardHeader,
     IonCardTitle,
     IonCardSubtitle,
-    IonCardContent
+    IonCardContent,
+
+    IonButtons,
+    IonBackButton
   ]
 })
+
 export class VideojuegoFormPage implements OnInit {
 
   id?: number;
@@ -63,26 +79,59 @@ export class VideojuegoFormPage implements OnInit {
   ) {}
 
   async ngOnInit() {
-    const idParam = this.route.snapshot.paramMap.get('id');
+
+    const idParam =
+      this.route.snapshot.paramMap.get('id');
 
     if (idParam) {
+
       this.id = Number(idParam);
-      this.videojuego = await this.videojuegosService.obtenerPorId(this.id);
+
+      this.videojuego =
+        await this.videojuegosService.obtenerPorId(
+          this.id
+        );
     }
   }
 
   async guardar() {
-    if (!this.videojuego.titulo || !this.videojuego.plataforma) {
+
+    if (
+      !this.videojuego.titulo ||
+      !this.videojuego.plataforma
+    ) {
+
       alert('Completa los campos obligatorios');
+
       return;
     }
 
-    if (this.id) {
-      await this.videojuegosService.actualizar(this.id, this.videojuego);
-    } else {
-      await this.videojuegosService.crear(this.videojuego);
-    }
+    try {
 
-    this.router.navigate(['/videojuegos']);
+      if (this.id) {
+
+        await this.videojuegosService.actualizar(
+          this.id,
+          this.videojuego
+        );
+
+      } else {
+
+        await this.videojuegosService.crear(
+          this.videojuego
+        );
+
+      }
+
+      // Redirección correcta
+      this.router.navigate(['/tabs/videojuegos']);
+
+    } catch (error) {
+
+      console.error(error);
+
+      alert('❌ Error al guardar videojuego');
+
+    }
   }
 }
