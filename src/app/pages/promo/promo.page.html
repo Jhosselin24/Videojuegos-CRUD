@@ -1,110 +1,168 @@
 <ion-header>
+
   <ion-toolbar color="primary">
-    <ion-title>🚀 Únete a GameCampus</ion-title>
+
+    <ion-title>
+      🚀 Únete a GameCampus
+    </ion-title>
+
   </ion-toolbar>
+
 </ion-header>
 
 <ion-content class="fondo-promo">
 
-  <!-- Hero Section -->
+  <!-- HERO -->
   <div class="hero-section">
-    <div class="hero-icon">🎮</div>
+
+    <div class="hero-icon">
+      🎮
+    </div>
+
     <h1>GameCampus</h1>
-    <p class="hero-subtitle">La app gamer de tu universidad</p>
-    <div class="version-badge">Versión de prueba GRATIS</div>
+
+    <p class="hero-subtitle">
+      La app gamer de tu universidad
+    </p>
+
+    <div class="version-badge">
+      Versión de prueba GRATIS
+    </div>
+
   </div>
 
-  <!-- Mensaje de invitación -->
+  <!-- INVITACIÓN -->
   <div class="invitacion-section">
+
     <div class="invitacion-card">
-      <h3>🎯 ¡Te invitamos a probar la app!</h3>
+
+      <h3>
+        🎯 ¡Te invitamos a probar la app!
+      </h3>
+
       <p>
-        Estamos probando <strong>GameCampus</strong>, una app de videojuegos desarrollada en Ionic
-        para la comunidad universitaria. ¿Te gustaría crear una cuenta y probarla?
+
+        Estamos probando
+        <strong>GameCampus</strong>,
+        una app de videojuegos
+        desarrollada en Ionic para la
+        comunidad universitaria.
+
       </p>
+
       <ul>
-        <li>✅ Registra tus videojuegos favoritos</li>
-        <li>✅ Conecta con gamers del campus</li>
-        <li>✅ Participa en encuestas y eventos</li>
-        <li>✅ Es completamente gratis</li>
+
+        <li>
+          ✅ Registra videojuegos
+        </li>
+
+        <li>
+          ✅ Conecta con gamers
+        </li>
+
+        <li>
+          ✅ Participa en encuestas
+        </li>
+
+        <li>
+          ✅ Descarga gratis
+        </li>
+
       </ul>
+
     </div>
+
   </div>
 
-  <!-- Features -->
+  <!-- FEATURES -->
   <div class="features-section">
+
     <div class="feature-item">
-      <span class="feature-icon">🕹️</span>
+
+      <span class="feature-icon">
+        🕹️
+      </span>
+
       <div>
-        <strong>Catálogo de videojuegos</strong>
-        <p>Registra y comparte tu colección gamer con toda la comunidad universitaria.</p>
+
+        <strong>
+          Catálogo gamer
+        </strong>
+
+        <p>
+          Guarda tus juegos favoritos.
+        </p>
+
       </div>
+
     </div>
+
     <div class="feature-item">
-      <span class="feature-icon">👥</span>
+
+      <span class="feature-icon">
+        👥
+      </span>
+
       <div>
-        <strong>Red de gamers del campus</strong>
-        <p>Conecta con compañeros que comparten tus juegos y plataformas favoritas.</p>
+
+        <strong>
+          Comunidad
+        </strong>
+
+        <p>
+          Conecta con gamers del campus.
+        </p>
+
       </div>
+
     </div>
-    <div class="feature-item">
-      <span class="feature-icon">📸</span>
-      <div>
-        <strong>Registro de interacciones</strong>
-        <p>Documenta tus encuentros gamer con foto y datos en tiempo real.</p>
-      </div>
-    </div>
-    <div class="feature-item">
-      <span class="feature-icon">🏆</span>
-      <div>
-        <strong>Torneos y eventos</strong>
-        <p>Participa en eventos gaming organizados dentro del campus.</p>
-      </div>
-    </div>
+
   </div>
 
-  <!-- QR Section -->
+  <!-- QR -->
   <div class="qr-section">
-    <h3>📱 Escanea para descargar o abrir la app</h3>
-    <!-- Contenedor donde se genera el QR dinámicamente con qrcode.js -->
+
+    <h3>
+      📱 Escanea para descargar
+    </h3>
+
     <div class="qr-wrapper">
-      <div id="qr-container" class="qr-container"></div>
+
+      <img
+        src="assets/img/qr-apk.png"
+        class="qr-img"
+        alt="QR APK">
+
     </div>
-    <p class="qr-hint">o comparte el enlace directamente</p>
+
+    <p class="qr-hint">
+      o comparte el enlace directamente
+    </p>
+
   </div>
 
-  <!-- Botones de acción -->
+  <!-- BOTONES -->
   <div class="acciones-section">
 
-    <ion-button expand="block" class="btn-compartir" (click)="compartir()">
-      <ion-icon name="share-social-outline" slot="start"></ion-icon>
-      Compartir enlace de descarga
+    <ion-button
+      expand="block"
+      class="btn-compartir"
+      (click)="compartir()">
+
+      Compartir enlace
+
     </ion-button>
 
-    <ion-button expand="block" fill="outline" class="btn-copiar" (click)="copiarEnlace()">
-      <ion-icon name="copy-outline" slot="start"></ion-icon>
+    <ion-button
+      expand="block"
+      fill="outline"
+      class="btn-copiar"
+      (click)="copiarEnlace()">
+
       Copiar enlace
+
     </ion-button>
 
-  </div>
-
-  <!-- Stats -->
-  <div class="stats-section">
-    <div class="stat-item">
-      <strong>🎮</strong>
-      <span class="stat-num">+120</span>
-      <span class="stat-label">Juegos</span>
-    </div>
-    <div class="stat-item">
-      <strong>👥</strong>
-      <span class="stat-num">+80</span>
-      <span class="stat-label">Gamers</span>
-    </div>
-    <div class="stat-item">
-      <strong>📸</strong>
-      <span class="stat-num">+200</span>
-      <span class="stat-label">Registros</span>
-    </div>
   </div>
 
   <div style="height: 30px;"></div>
