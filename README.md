@@ -169,29 +169,6 @@ npx cap open android
 
 ---
 
-## 🔑 Variables de entorno
-
-Ubica los valores en `src/environments/environment.ts`:
-
-```typescript
-export const environment = {
-  production: false,
-
-  // ── Supabase ──────────────────────────────────────────
-  // Crea tu proyecto en https://supabase.com/
-  supabaseUrl: 'https://TU-PROYECTO.supabase.co',
-  supabaseKey: 'TU_ANON_KEY',
-
-  // ── RAWG API (opcional) ───────────────────────────────
-  // Registro gratuito en https://rawg.io/apidocs
-  // Si no se configura, el servicio hace fallback a FreeToGame y CheapShark
-  rawgKey: 'TU_RAWG_KEY'
-};
-```
-
-> **Nota de seguridad:** La `supabaseKey` es la clave `anon` (pública). Nunca uses la clave `service_role` en el frontend.
-
----
 
 ## 🗄 Estructura de la base de datos
 
