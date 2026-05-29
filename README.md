@@ -138,7 +138,7 @@ videojuegos-crud/
 
 ```bash
 git clone https://github.com/TU-USUARIO/TU-REPO.git
-cd TU-REPO
+cd ...
 ```
 
 ### 2. Instalar dependencias
@@ -232,7 +232,7 @@ Se utiliza un bucket llamado **`evidencias`** con dos carpetas:
 
 ### Row Level Security (RLS)
 
-Para que el dashboard público pueda leer encuestas sin autenticación, ejecuta en el SQL Editor de Supabase:
+Para que el dashboard público pueda leer encuestas sin autenticación, ejecutamos en el SQL Editor de Supabase:
 
 ```sql
 -- Lectura pública de encuestas (necesario para el dashboard)
