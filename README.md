@@ -306,11 +306,7 @@ El servicio `EncuestasService.buscarJuego()` implementa un sistema de fallback e
 3. CheapShark / Steam (sin key — busca juegos de PC)
         ↓ si falla
 4. Retorna null (el usuario puede continuar igual)
-```
 
-Para activar RAWG, registra una cuenta gratuita en [rawg.io/apidocs](https://rawg.io/apidocs) y agrega tu key en `environment.ts`.
-
----
 
 ## 📊 Dashboard web
 
@@ -397,14 +393,14 @@ En `src/app/pages/promo/promo.page.ts`, reemplaza el valor de `enlaceDescarga`:
 
 ```typescript
 readonly enlaceDescarga =
-  'https://github.com/TU-USUARIO/TU-REPO/releases/download/v1.0/app-debug.apk';
+  'https://github.com/Jhosselin24/GameCampus/releases/download/v1.0/app-debug.apk';
 ```
 
 ---
 
 ## 👤 Autor
 
-Desarrollado como proyecto universitario con Ionic + Angular + Supabase.
+Jhosselin Naula
 
 ---
 
