@@ -1,7 +1,17 @@
-// tabs.page.ts
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
 import {
-  IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel
+  IonTabs,
+  IonTabBar,
+  IonTabButton,
+  IonIcon,
+  IonLabel,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonButtons,
+  IonButton
 } from '@ionic/angular/standalone';
 
 @Component({
@@ -9,21 +19,25 @@ import {
   templateUrl: './tabs.page.html',
   styleUrls: ['./tabs.page.scss'],
   standalone: true,
-  imports: [IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel]
+  imports: [
+    IonTabs,
+    IonTabBar,
+    IonTabButton,
+    IonIcon,
+    IonLabel,
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonButtons,
+    IonButton
+  ]
 })
-export class TabsPage {}
+export class TabsPage {
 
-/* ==========================================
-   tabs.page.scss
-   ========================================== */
-/*
-.tab-bar-gamer {
-  --background: rgba(10, 15, 30, 0.95);
-  --color: #475569;
-  --color-selected: #60a5fa;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(16px);
-  padding-bottom: env(safe-area-inset-bottom);
-  height: 62px;
+  constructor(private router: Router) {}
+
+  cerrarSesion() {
+    localStorage.clear();
+    this.router.navigate(['/login']);
+  }
 }
-*/
